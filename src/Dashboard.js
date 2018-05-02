@@ -16,9 +16,6 @@ function qibinglian(){
     {logout}
 )
 class Dashboard extends React.Component{
-    constructor(props){
-        super(props);
-    }
     render(){
         const app=(
          <div>
