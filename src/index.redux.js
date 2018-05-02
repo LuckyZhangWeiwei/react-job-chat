@@ -1,14 +1,14 @@
 const ADD='ADD';
 const SUBSTRACT='SUBSTRACT';
 //reducer
-export function counter(state=0,action){
+export function counter(state=10,action){
     switch(action.type){
         case ADD:
           return state+1;
         case SUBSTRACT:
           return state-1;
         default:
-          return 10;
+          return state;
     }
 }
 //action creator

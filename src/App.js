@@ -2,7 +2,10 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {add_gun,subtract_gun,add_gun_async} from './index.redux'
 
-@connect(state=>({num:state}),{add_gun,subtract_gun,add_gun_async})
+@connect(
+    state=>({num:state.counter}),
+   {add_gun,subtract_gun,add_gun_async}
+)
 class App extends React.Component{
     render(){
         const num=this.props.num;
