@@ -1,16 +1,20 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
-import {login} from './Auth.redux';
+import {login,getUserData} from './Auth.redux';
 
 @connect(
     state=>state.auth,
-    {login}
+    {login,getUserData}
 )
 class Auth extends React.Component{
+   componentDidMount(){
+        this.props.getUserData();
+    }
    render(){
        return (
            <div>
+            <h2>我的名字是：{this.props.user}</h2>
            {
                this.props.isAuth?
                <Redirect to='/dashboard/'></Redirect>:
