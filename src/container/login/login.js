@@ -14,6 +14,21 @@ class Login extends React.Component{
        return(
            <div>
                <Logo/>
+               <WhiteSpace/>
+                   <WhiteSpace/>
+                   <WhiteSpace/>
+                   <WhiteSpace/>
+                   <WhiteSpace/>
+                   <WhiteSpace/>
+                   <WhiteSpace/>
+                   <WhiteSpace/>
+                   <WhiteSpace/>
+                   <WhiteSpace/>
+                   <WhiteSpace/>
+                   <WhiteSpace/>
+                   <WhiteSpace/>
+                   <WhiteSpace/>
+                   <WhiteSpace/>
                <WingBlank>
                    <List>
                        <InputItem>用户</InputItem>

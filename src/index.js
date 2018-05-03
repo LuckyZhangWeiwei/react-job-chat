@@ -10,7 +10,7 @@ import './config';
 import Login from './container/login/login';
 import Register from './container/register/register';
 import AuthRoute from './component/authroute/authroute';
-
+import './index.css'
 
 const store=createStore(reducers,composeWithDevTools(applyMiddleware(thunk)));
 ReactDom.render(
