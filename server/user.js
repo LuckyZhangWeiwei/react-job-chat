@@ -54,6 +54,23 @@ Router.get('/info',(req,res)=>{
         }
     })
 })
+Router.post('/update',(req,res)=>{
+    const {userid}=req.cookies;
+    if(!userid){
+        return res.json({code:1});
+    }
+    const {avatar,company,desc,money,title}=req.body;
+    User.findByIdAndUpdate(userid,
+        {avatar,company,desc,money,title},
+        (err,doc)=>{
+            const data=Object.assign({},{
+                user:doc.user,
+                usertype:doc.usertype
+            },{avatar,company,desc,money,title});
+            return res.json({code:0,data});
+        });
+       
+})
 function md5Pwd(pwd){
     const salt="asdfaswerzsfgqwgfdhert!@#$";
     return utils.md5(utils.md5(pwd+salt));
