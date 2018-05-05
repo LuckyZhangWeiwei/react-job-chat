@@ -8,14 +8,12 @@ import AvatarSelector from '../../component/avatar-selector/avatar-selector';
     state=>state.user,
     {updateUserInfo}
 )
-class BossInfo extends React.Component{
+class EmployeeInfo extends React.Component{
    constructor(props){
       super(props);
       this.state={
          title:'',
          avatar:'',
-         company:'',
-         money:'',
          desc:''
       };
       this.UpdateInfo=this.UpdateInfo.bind(this);
@@ -40,23 +38,19 @@ class BossInfo extends React.Component{
        return (
         <div>
           {redirectToPath && redirectToPath !==path?<Redirect to={this.props.redirectTo}/>:null}
-          <NavBar mode="dark" rightContent={[<Icon type="check" key='ok' onClick={this.UpdateInfo}/>]}>企业完善信息</NavBar>
+          <NavBar mode="dark" rightContent={[<Icon type="check" key='ok' onClick={this.UpdateInfo}/>]}>求职者完善信息</NavBar>
           <AvatarSelector onSelect={this.selectAvator}></AvatarSelector>
           <List>
-            <InputItem onChange={v=>this.handleChange('title',v)}>招聘职位</InputItem>
-            <WhiteSpace/>
-            <InputItem onChange={v=>this.handleChange('company',v)}>公司名称</InputItem>
-            <WhiteSpace/>
-            <InputItem onChange={v=>this.handleChange('money',v)}>职位薪资</InputItem>
+            <InputItem onChange={v=>this.handleChange('title',v)}>求职岗位</InputItem>
             <WhiteSpace/>
             <TextareaItem 
                onChange={v=>this.handleChange('desc',v)}
                rows={5}
                autoHeight={true}
-               title="职位简介"/>
+               title="个人简介"/>
           </List>
         </div>
        )
    }
 }
-export default BossInfo;
+export default EmployeeInfo;

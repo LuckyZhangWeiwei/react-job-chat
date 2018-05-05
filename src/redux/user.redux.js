@@ -5,10 +5,10 @@ const ERROR_MSG='ERROR_MSG';
 const LOAD_USERDATA='LOAD_USERDATA';
 const AUTH_SUCCESS='AUTH_SUCCESS';
 const initState={
-    redirectTo:'',
-    msg:'',
-    user:'',
-    usertype:''
+    redirectTo:null,
+    msg:null,
+    user:null,
+    usertype:null
 }
 export function user(state=initState,action){
     switch(action.type){
@@ -78,6 +78,7 @@ export function updateUserInfo(userInfo){
 function errorMsg(msg){
     return {msg,type:ERROR_MSG}
 }
-function authSuccess(data){
+function authSuccess(obj){
+    const {pwd,...data}=obj;
     return {type:AUTH_SUCCESS,payload:data}
 }

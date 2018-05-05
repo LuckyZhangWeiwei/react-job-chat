@@ -11,6 +11,7 @@ import Login from './container/login/login';
 import Register from './container/register/register';
 import AuthRoute from './component/authroute/authroute';
 import BossInfo from './container/bossinfo/bossinfo';
+import EmployInfo from './container/employeeinfo/employeeinfo';
 import './index.css'
 
 const store=createStore(reducers,composeWithDevTools(applyMiddleware(thunk)));
@@ -19,7 +20,7 @@ ReactDom.render(
    <BrowserRouter>
       <div>
         <AuthRoute/>
-        {/* <Route path='/employeeinfo' component={Login}></Route> */}
+        <Route path='/employeeinfo' component={EmployInfo}></Route>
         <Route path='/bossinfo' component={BossInfo}></Route>
         <Route path='/login' component={Login}></Route>
         <Route path='/register' component={Register}></Route>
