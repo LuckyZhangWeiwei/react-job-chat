@@ -9,3 +9,27 @@
     left:10px;
     z-index: 1;
 }
+.am-tab-bar{
+    position: fixed;
+    bottom:0;
+    width:100%;
+}
+.am-navbar{
+    position: fixed;
+    top:0;
+    width:100%;
+}
+.page-content{
+    padding: 45px 5px;
+}
+.am-list-header{
+    margin-top: 45px;
+}
+.fixed-header{
+    position: fixed;
+    top:0;
+    width:100%
+}
+.page-content{
+    padding:45px 5px;
+}
