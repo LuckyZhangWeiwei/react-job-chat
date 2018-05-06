@@ -7,8 +7,9 @@ const _filter={'pwd':0,'__v':0};
 
 Router.get('/list',(req,res)=>{
     //User.remove({},(req,res)=>{});
-    User.find({},(err,doc)=>{
-        return res.json(doc);
+    const usertype=req.query.type;
+    User.find({usertype},(err,doc)=>{
+        return res.json({code:0,data:doc});
     })
 })
 Router.post('/register',(req,res)=>{

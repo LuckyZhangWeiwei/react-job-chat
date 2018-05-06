@@ -3,10 +3,9 @@ import {NavBar} from 'antd-mobile';
 import {connect} from 'react-redux';
 import {Switch,Route} from 'react-router-dom';
 import NavLinkBar from '../navlink/navlink';
+import Boss from '../../component/boss/boss';
 
-function Boss(){
-    return <h2>boss</h2>;
-}
+
 function Employee(){
     return <h2>Employee</h2>;
 }
@@ -57,7 +56,7 @@ class Dashboard extends  React.Component{
           ];
         return (
             <div>
-                <NavBar mode='dark' className="fixed-header">{navList.find(v=>v.path===pathname).title}</NavBar>
+                <NavBar mode='dark' className="fixed-header">{navList.filter(v=>{return v.path===pathname}).title}</NavBar>
                 <div style={{marginTop:45}}>
                     <Switch>
                         {
