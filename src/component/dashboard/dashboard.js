@@ -31,14 +31,14 @@ class Dashboard extends  React.Component{
                 text:'求职者',
                 icon:'boss',
                 title:'求职者',
-                component:Boss,
+                component:Employee,
                 hide:user.usertype==='employee'
             },{
                 path:'/employee',
                 text:'招聘企业',
                 icon:'job',
                 title:'招聘企业',
-                component:Employee,
+                component:Boss,
                 hide:user.usertype==='boss'
             },{
                 path:'/msg',
