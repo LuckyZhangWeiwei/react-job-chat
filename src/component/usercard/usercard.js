@@ -13,7 +13,7 @@ class UserCard extends React.Component{
             <WingBlank>
             <WhiteSpace/>
          {this.props.userList.map(v=>(
-            v.avatar ? (<Card key={v._id}>
+            v.avatar ? (<Card key={v._id} onClick={()=>{alert(1);}}>
                  <Header 
                     title={v.user}
                     thumb={require(`./../avatar-selector/imgs/${v.avatar}.png`)}   

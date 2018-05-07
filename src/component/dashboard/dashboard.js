@@ -5,18 +5,15 @@ import {Switch,Route} from 'react-router-dom';
 import NavLinkBar from '../navlink/navlink';
 import Boss from '../../component/boss/boss';
 import Employee from '../../component/employee/employee';
-import {withRouter} from 'react-router-dom'
+import User from '../../component/user/user';
 
 function Msg(){
     return <h2>Msg</h2>;
 }
-function User(){
-    return <h2>User</h2>;
-}
+
 @connect(
     state=>state
 )
-@withRouter
 class Dashboard extends  React.Component{
     render(){
         const {pathname}=this.props.location;
@@ -50,9 +47,10 @@ class Dashboard extends  React.Component{
                 component:User
             }
           ];
+          let headerTitle=navList.filter(v=>{return v.path===pathname}).length===0?null: navList.filter(v=>{return v.path===pathname})[0].title;
         return (
             <div>
-                <NavBar mode='dark' className="fixed-header">{navList.filter(v=>{return v.path===pathname})[0].title}</NavBar>
+                <NavBar mode='dark' className="fixed-header">{headerTitle}</NavBar>
                 <div style={{marginTop:45}}>
                     <Switch>
                         {
