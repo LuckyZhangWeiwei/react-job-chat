@@ -60,14 +60,14 @@ Router.post('/update',(req,res)=>{
     if(!userid){
         return res.json({code:1});
     }
-    const {avatar,company,desc,money,title}=req.body;
+    const {avatar,company,desc,salary,title}=req.body;
     User.findByIdAndUpdate(userid,
-        {avatar,company,desc,money,title},
+        {avatar,company,desc,salary,title},
         (err,doc)=>{
             const data=Object.assign({},{
                 user:doc.user,
                 usertype:doc.usertype
-            },{avatar,company,desc,money,title});
+            },{avatar,company,desc,salary,title});
             return res.json({code:0,data});
         });
        

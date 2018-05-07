@@ -20,10 +20,16 @@ class UserCard extends React.Component{
                     extra={<span>{v.title}</span>}>  
                  </Header>
                  <Body>
+                     {v.usertype==='boss'?<p>公司:{v.company}</p>:null}
                      {v.desc.split('\n').map(v=>(<p key={v}>{v}</p>))}
+                     {v.usertype==='boss'?<p>薪资:{v.salary}</p>:null}
                  </Body>
             </Card>):null
          ))}
+          <WhiteSpace/>
+          <WhiteSpace/>
+          <WhiteSpace/>
+          <WhiteSpace/>
         </WingBlank>
         )
     }

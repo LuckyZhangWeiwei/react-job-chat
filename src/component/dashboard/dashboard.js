@@ -21,7 +21,6 @@ class Dashboard extends  React.Component{
     render(){
         const {pathname}=this.props.location;
         const user=this.props.user;
-        console.log("user:",user);
         const navList=[
             {
                 path:'/boss',
@@ -51,10 +50,9 @@ class Dashboard extends  React.Component{
                 component:User
             }
           ];
-          console.log(navList);
         return (
             <div>
-                <NavBar mode='dark' className="fixed-header">{navList.filter(v=>{return v.path===pathname}).title}</NavBar>
+                <NavBar mode='dark' className="fixed-header">{navList.filter(v=>{return v.path===pathname})[0].title}</NavBar>
                 <div style={{marginTop:45}}>
                     <Switch>
                         {

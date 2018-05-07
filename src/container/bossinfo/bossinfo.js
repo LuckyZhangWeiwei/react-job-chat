@@ -47,7 +47,7 @@ class BossInfo extends React.Component{
             <WhiteSpace/>
             <InputItem onChange={v=>this.handleChange('company',v)}>公司名称</InputItem>
             <WhiteSpace/>
-            <InputItem onChange={v=>this.handleChange('money',v)}>职位薪资</InputItem>
+            <InputItem onChange={v=>this.handleChange('salary',v)}>职位薪资</InputItem>
             <WhiteSpace/>
             <TextareaItem 
                onChange={v=>this.handleChange('desc',v)}
