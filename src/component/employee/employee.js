@@ -9,15 +9,15 @@ import UserCard from '../usercard/usercard';
     state=>state.chatuser,
     {getUserList}
 )
-class Boss extends React.Component{
+class Employee extends React.Component{
     componentDidMount(){
-        this.props.getUserList(`employee`);
+        this.props.getUserList(`boss`);
     }
     render(){
         return (
-            <UserCard userList={this.props.userList}/>
+          <UserCard userList={this.props.userList}/>
         )
     }
 }
 
-export default Boss;
+export default Employee;
