@@ -48,7 +48,7 @@ class Login extends React.Component{
                    <WhiteSpace/>
                <WingBlank>
                    <List>
-                   {this.props.redirectTo?<Redirect to={this.props.redirectTo}/>:null}
+                   {this.props.redirectTo && this.props.redirectTo!=='/login'?<Redirect to={this.props.redirectTo}/>:null}
                    {this.props.msg?<p className='error-msg'>{this.props.msg}</p>:null}
                        <InputItem onChange={v=>this.handleChange('user',v)}>用户</InputItem>
                        <WhiteSpace/>
