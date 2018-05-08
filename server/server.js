@@ -8,8 +8,7 @@ const userRoute=require('./user');
 const server=require('http').Server(app);
 const io=require('socket.io')(server);
 io.on('connection',function(socket){
-    console.log('user login');
-    socket.on('sendmessage',function(data){
+    socket.on('sendmessage',function(data){  //socket 为一次链接，io 为全局对象
         //console.log('data:',data);
         io.emit('receivemessage',data);
     })
