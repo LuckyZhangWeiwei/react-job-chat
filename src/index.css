@@ -23,9 +23,9 @@
 .page-content{
     padding: 45px 5px;
 }
-.am-list-header{
+/* .am-list-header{
     margin-top: 45px;
-}
+} */
 .fixed-header{
     position: fixed;
     top:0;
