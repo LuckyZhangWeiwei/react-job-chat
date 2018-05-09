@@ -6,6 +6,9 @@ const User=models.getModel('user');
 const Chat=models.getModel('chat');
 const _filter={'pwd':0,'__v':0};
 
+// Chat.remove({},(req,res)=>{
+// })
+
 Router.get('/list',(req,res)=>{
     //User.remove({},(req,res)=>{});
     const usertype=req.query.type;
