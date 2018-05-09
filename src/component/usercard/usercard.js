@@ -15,7 +15,7 @@ class UserCard extends React.Component{
             <WingBlank>
             <WhiteSpace/>
          {this.props.userList.map(v=>(
-            v.avatar ? (<Card key={v._id} onClick={()=>{this.props.history.push(`/chat/${v.user}`)}}>
+            v.avatar ? (<Card key={v._id} onClick={()=>{this.props.history.push(`/chat/${v._id}`)}}>
                  <Header 
                     title={v.user}
                     thumb={require(`./../avatar-selector/imgs/${v.avatar}.png`)}   

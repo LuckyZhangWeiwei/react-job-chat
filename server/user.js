@@ -3,6 +3,7 @@ const utils=require('utility');
 const Router=express.Router();
 const models=require('./model');
 const User=models.getModel('user');
+const Chat=models.getModel('chat');
 const _filter={'pwd':0,'__v':0};
 
 Router.get('/list',(req,res)=>{
@@ -53,6 +54,15 @@ Router.get('/info',(req,res)=>{
         }else{
             return res.json({code:0,data:doc});
         }
+    })
+})
+Router.get(`/getmsglist`,(req,res)=>{
+    const {userid}=req.cookies;
+    //'$or':[{rom:userid,to:userid}]
+    Chat.find({},(err,doc)=>{
+      if(!err){
+          return res.json({code:0,msgs:doc});
+      }  
     })
 })
 Router.post('/update',(req,res)=>{
