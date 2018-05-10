@@ -70,6 +70,8 @@
   min-height: 25px;
   max-width: 230px;
   text-align: left;
+  margin: 0 10px;
+  font-size: 14px;
 }
 .you-mes::after{
     content: "";
@@ -96,6 +98,8 @@
     min-height: 25px;
     max-width: 230px;
     text-align: left;
+    margin: 0 5px;
+    font-size: 14px;
 }
 .me-mes::after{
     content: "";

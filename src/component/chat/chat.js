@@ -1,5 +1,5 @@
 import React from 'react';
-import {List,InputItem,NavBar} from 'antd-mobile';
+import {List,InputItem,NavBar,Icon} from 'antd-mobile';
 import {connect}from 'react-redux';
 import {getMsgList,sendMsg,recvMsg} from '../../redux/chat.redux';
 
@@ -19,6 +19,9 @@ class Chat extends React.Component{
         this.props.recvMsg();
     }
     handleSubmit(){
+        if(!this.state.text){
+            return null;
+        }
       const from =this.props.user._id;
       const to=this.props.match.params.user;
       const msg=this.state.text;
@@ -30,16 +33,25 @@ class Chat extends React.Component{
    render(){
        const user=this.props.match.params.user;
        const Item=List.Item;
+       const users=this.props.chat.users;
+       if(!users[user]){
+           return null;
+        }
        return (
            <div id='chat-page'>
-               <NavBar mode='dark' className="stick-header">{user}</NavBar>
+               <NavBar mode='dark' className="stick-header" 
+               icon={<Icon type="left"/>}
+               onLeftClick={()=>{this.props.history.goBack()}}
+               >{users[user].name}</NavBar>
                <div style={{marginTop:45,marginBottom:45}}>
                    <List>
                    {this.props.chat.chatmsg.map(v=>{
+                        const avatarfrom=require(`./../avatar-selector/imgs/${users[v.from].avatar}.png`);
+                        const avatarto=require(`./../avatar-selector/imgs/${users[v.to].avatar}.png`);
                         return v.from ===user?(
-                            <Item key={v._id}><p className="you-mes">{v.content}</p></Item>
+                            <Item key={v._id} thumb={avatarfrom} ><div className="you-mes">{v.content}</div></Item>
                         ):(
-                            <Item key={v._id} extra={'avatar'} className='chat-me'><div className="me-mes">{v.content}</div></Item>
+                            <Item key={v._id} extra={<img src={avatarto}/>} className='chat-me'><div className="me-mes">{v.content}</div></Item>
                         );
                    })}
                    </List>
