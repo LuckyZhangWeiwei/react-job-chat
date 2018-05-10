@@ -35,6 +35,9 @@
 .page-content{
     padding:45px 5px;
 }
+#chat-page{
+   height: 100vh;
+}
 #chat-page .chat-me .am-list-extra{
     flex-basis: auto;
 }
@@ -42,9 +45,79 @@
     padding-right: 15px;
     text-align: right;
 }
+
+#chat-page .am-list-line::after{
+    height: 0;
+}
+#chat-page .am-list-item:not(:last-child) .am-list-line {
+    border-bottom: none;
+}
+#chat-page .am-list-body div:not(:last-child) .am-list-line{
+    border-bottom: none;
+}
+#chat-page .am-list-item .am-list-line .am-list-content{
+    white-space: normal;
+}
+.you-mes{
+  display: inline-block;
+  background-color: #ddd;
+  padding:10px;
+  border-radius: 6px;
+  margin: 10px;
+  position: relative;
+  word-wrap: break-word;
+  word-break: break-all;
+  min-height: 25px;
+  max-width: 230px;
+  text-align: left;
+}
+.you-mes::after{
+    content: "";
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    border: 10px solid transparent;
+    border-right-color: #ddd;
+    position: absolute;
+    left: 2px;
+    margin-left: -20px;
+    top:50%;
+    transform:translatey(-50%);
+}
+.me-mes{
+    display: inline-block;
+    background: #b2e281;
+    padding:10px;
+    border-radius: 6px;
+    margin: 10px;
+    position: relative;
+    word-wrap: break-word;
+    word-break: break-all;
+    min-height: 25px;
+    max-width: 230px;
+    text-align: left;
+}
+.me-mes::after{
+    content: "";
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    border: 10px solid transparent;
+    border-left-color: #b2e281;
+    position: absolute;
+    left: 99%;
+    top:50%;
+    transform:translatey(-50%);
+}
 .stick-footer{
 	z-index:10;
-	position: absolute;
+	position: fixed;
 	bottom: 0;
+	width:100%;
+}
+.stick-header{
+    z-index:10;
+	position: fixed;
+	top: 0;
 	width:100%;
 }

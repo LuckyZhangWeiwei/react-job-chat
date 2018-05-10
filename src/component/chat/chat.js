@@ -32,19 +32,17 @@ class Chat extends React.Component{
        const Item=List.Item;
        return (
            <div id='chat-page'>
-               <NavBar mode='dark'>{user}</NavBar>
-               <div>
+               <NavBar mode='dark' className="stick-header">{user}</NavBar>
+               <div style={{marginTop:45,marginBottom:45}}>
+                   <List>
                    {this.props.chat.chatmsg.map(v=>{
                         return v.from ===user?(
-                            <List key={v._id}>
-                                <Item>{v.content}</Item>
-                            </List>
+                            <Item key={v._id}><p className="you-mes">{v.content}</p></Item>
                         ):(
-                            <List key={v._id}>
-                                <Item extra={'avatar'} className='chat-me'>{v.content}</Item>
-                            </List>
+                            <Item key={v._id} extra={'avatar'} className='chat-me'><div className="me-mes">{v.content}</div></Item>
                         );
                    })}
+                   </List>
                </div>
              <div className="stick-footer">
               <List>
