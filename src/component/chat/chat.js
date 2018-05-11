@@ -48,7 +48,7 @@ class Chat extends React.Component{
                icon={<Icon type="left"/>}
                onLeftClick={()=>{this.props.history.goBack()}}
                >{users[userid].name}</NavBar>
-               <div style={{marginTop:45,marginBottom:90}}>
+               <div style={{marginTop:90,marginBottom:90}}>
                    <List id="chat-list">
                    {chatmsgs.map(v=>{
                         const avatar=require(`./../avatar-selector/imgs/${users[v.from].avatar}.png`);

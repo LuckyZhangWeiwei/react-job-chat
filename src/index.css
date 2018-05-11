@@ -38,6 +38,7 @@
 #chat-page{
    height: 100vh;
    background: #fff;
+   margin-top:-45px;
 }
 #chat-page .chat-me .am-list-extra{
     flex-basis: auto;
