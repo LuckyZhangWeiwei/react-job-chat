@@ -1,5 +1,5 @@
 import React from 'react';
-import {List,InputItem,NavBar,Icon} from 'antd-mobile';
+import {List,TextareaItem,NavBar,Icon,Button} from 'antd-mobile';
 import {connect}from 'react-redux';
 import {getMsgList,sendMsg,recvMsg} from '../../redux/chat.redux';
 
@@ -26,9 +26,7 @@ class Chat extends React.Component{
       const to=this.props.match.params.user;
       const msg=this.state.text;
       this.props.sendMsg({from,to,msg});
-         this.setState({
-             text:''
-         })
+      this.setState({text:''});
     }
    render(){
        const user=this.props.match.params.user;
@@ -43,8 +41,8 @@ class Chat extends React.Component{
                icon={<Icon type="left"/>}
                onLeftClick={()=>{this.props.history.goBack()}}
                >{users[user].name}</NavBar>
-               <div style={{marginTop:45,marginBottom:45}}>
-                   <List>
+               <div style={{marginTop:45,marginBottom:90}}>
+                   <List id="chat-list">
                    {this.props.chat.chatmsg.map(v=>{
                         const avatarfrom=require(`./../avatar-selector/imgs/${users[v.from].avatar}.png`);
                         const avatarto=require(`./../avatar-selector/imgs/${users[v.to].avatar}.png`);
@@ -58,7 +56,7 @@ class Chat extends React.Component{
                </div>
              <div className="stick-footer">
               <List>
-                  <InputItem
+                  <TextareaItem
                     placeholder='请输入'
                     value={this.state.text}
                     onChange={v=>{
@@ -66,8 +64,9 @@ class Chat extends React.Component{
                             text:v
                         })
                     }}
-                    extra={<span onClick={()=>{this.handleSubmit()}}>发送</span>}
-                  ></InputItem>
+                    autoHeight
+                  />
+                  <Button type="primary"  onClick={()=>{this.handleSubmit()}}>发送</Button>
               </List>
              </div>
            </div>
