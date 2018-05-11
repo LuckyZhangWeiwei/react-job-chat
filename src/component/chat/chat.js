@@ -1,5 +1,5 @@
 import React from 'react';
-import {List,TextareaItem,NavBar,Icon,Button} from 'antd-mobile';
+import {List,TextareaItem,NavBar,Icon,Button,Grid} from 'antd-mobile';
 import {connect}from 'react-redux';
 import {getMsgList,sendMsg,recvMsg} from '../../redux/chat.redux';
 import { getChatId } from '../../util';
@@ -20,6 +20,9 @@ class Chat extends React.Component{
             this.props.getMsgList();
             this.props.recvMsg();
         }
+        // setTimeout(() => {
+        //     window.dispatchEvent(new Event('resize'));
+        // }, 0);
     }
     handleSubmit(){
         if(!this.state.text){
@@ -32,6 +35,10 @@ class Chat extends React.Component{
       this.setState({text:''});
     }
    render(){
+      const emoji = '😀 😁 😂 🤣 😃 😄 😅 😆 😉 😊 😋 😎 😍 😘 😗 😙 😚 ☺ 🙂 🤗 🤔 😐 😑 😶 🙄 😏 😣 😥 😮 🤐 😯 😪 😫 😴 😌 😛 😜 😝 🤤 😒 😓 😔 😕 🙃 🤑 😲 ☹ 🙁 😖 😞 😟 😤 😢 😭 😦 😧 😨 😩 😬 😰 😱 😳 😵 😡 😠 😷 🤒 🤕 🤢 🤧 😇 🤠 🤡 🤥 🤓 😈 👿 👹 👺 💀 👻 👽 🤖 💩 😺 😸 😹 😻 😼 😽 🙀 😿 😾'
+      .split(' ')
+      .filter(v => v)
+      .map(v => ({text: v}));
        const userid=this.props.match.params.user;
        const Item=List.Item;
        const users=this.props.chat.users;
@@ -74,6 +81,7 @@ class Chat extends React.Component{
                   />
                   <Button type="primary"  onClick={()=>{this.handleSubmit()}}>发送</Button>
               </List>
+              {/* <Grid data={emoji} columnNum={9} carouselMaxRow={4} isCarousel={true}/> */}
              </div>
            </div>
        )
