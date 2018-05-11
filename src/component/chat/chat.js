@@ -2,6 +2,7 @@ import React from 'react';
 import {List,TextareaItem,NavBar,Icon,Button} from 'antd-mobile';
 import {connect}from 'react-redux';
 import {getMsgList,sendMsg,recvMsg} from '../../redux/chat.redux';
+import { getChatId } from '../../util';
 
 @connect(
   state=>state,
@@ -15,8 +16,10 @@ class Chat extends React.Component{
         }
     }
     componentDidMount(){
-        this.props.getMsgList();
-        this.props.recvMsg();
+        if(!this.props.chat.chatmsg.length){
+            this.props.getMsgList();
+            this.props.recvMsg();
+        }
     }
     handleSubmit(){
         if(!this.state.text){
@@ -29,10 +32,14 @@ class Chat extends React.Component{
       this.setState({text:''});
     }
    render(){
-       const user=this.props.match.params.user;
+       const userid=this.props.match.params.user;
        const Item=List.Item;
        const users=this.props.chat.users;
-       if(!users[user]){
+       const chatid=getChatId(userid,this.props.user._id);
+       const chatmsgs=this.props.chat.chatmsg.filter(v=>{
+         return v.chatid===chatid
+       });
+       if(!users[userid]){
            return null;
         }
        return (
@@ -40,16 +47,15 @@ class Chat extends React.Component{
                <NavBar mode='dark' className="stick-header" 
                icon={<Icon type="left"/>}
                onLeftClick={()=>{this.props.history.goBack()}}
-               >{users[user].name}</NavBar>
+               >{users[userid].name}</NavBar>
                <div style={{marginTop:45,marginBottom:90}}>
                    <List id="chat-list">
-                   {this.props.chat.chatmsg.map(v=>{
-                        const avatarfrom=require(`./../avatar-selector/imgs/${users[v.from].avatar}.png`);
-                        const avatarto=require(`./../avatar-selector/imgs/${users[v.to].avatar}.png`);
-                        return v.from ===user?(
-                            <Item key={v._id} thumb={avatarfrom} ><div className="you-mes">{v.content}</div></Item>
+                   {chatmsgs.map(v=>{
+                        const avatar=require(`./../avatar-selector/imgs/${users[v.from].avatar}.png`);
+                        return v.from ===userid?(
+                            <Item key={v._id} thumb={avatar} ><div className="you-mes">{v.content}</div></Item>
                         ):(
-                            <Item key={v._id} extra={<img src={avatarto}/>} className='chat-me'><div className="me-mes">{v.content}</div></Item>
+                            <Item key={v._id} extra={<img src={avatar}/>} className='chat-me'><div className="me-mes">{v.content}</div></Item>
                         );
                    })}
                    </List>

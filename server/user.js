@@ -60,14 +60,14 @@ Router.get('/info',(req,res)=>{
     })
 })
 Router.get(`/getmsglist`,(req,res)=>{
-    const {userid}=req.cookies;
+    const user=req.cookies.userid;
     User.find({},(err,doc)=>{
         let users={};
         doc.forEach(v=>{
             users[v._id]={name:v.user,avatar:v.avatar};
         })
 
-        Chat.find({'$or':[{from:userid},{to:userid}]},(err,doc)=>{
+        Chat.find({'$or':[{from:user},{to:user}]},(err,doc)=>{
             if(!err){
                 return res.json({code:0,msgs:doc,users});
             }  

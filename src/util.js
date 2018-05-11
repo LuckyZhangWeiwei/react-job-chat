@@ -6,3 +6,6 @@ export function getRedirectPath({usertype,avatar}){
    return url;
 }
 
+export function getChatId(userId,targetId){
+    return [userId,targetId].sort().join('_');
+}

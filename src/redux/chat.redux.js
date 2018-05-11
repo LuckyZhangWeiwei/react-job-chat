@@ -44,7 +44,7 @@ export function sendMsg({from,to,msg}){
 export function recvMsg(){
     return dispatch=>{
         socket.on('receivemessage',data=>{
-            console.log('recemsg:',data);
+           // console.log('recemsg:',data);
             dispatch(msgRecv(data));
         })
     }
