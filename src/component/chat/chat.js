@@ -82,7 +82,9 @@ class Chat extends React.Component{
                    </List>
                </div>
              <div className="stick-footer">
-              <List>
+              <List renderFooter={()=>{
+                  return <span onClick={()=>{this.setState({showIconPanel:!this.state.showIconPanel});this.fixCarousel()}}>😊</span>;
+              }}>
                   {
                       this.state.showIconPanel?
                       <Grid data={emoji} columnNum={9} carouselMaxRow={3}  isCarousel={true}
@@ -106,7 +108,7 @@ class Chat extends React.Component{
                         autoHeight
                       />
                   <div>
-                   <Button type="primary" className="chatsendbutton" onClick={()=>{this.setState({showIconPanel:!this.state.showIconPanel});this.fixCarousel()}}>😊</Button>
+                   {/* <Button type="primary" className="chatsendbutton" onClick={()=>{this.setState({showIconPanel:!this.state.showIconPanel});this.fixCarousel()}}>😊</Button> */}
                   <Button type="primary" className="chatsendbutton" onClick={()=>{this.handleSubmit()}}>发送</Button>
                   </div>
               </List>
