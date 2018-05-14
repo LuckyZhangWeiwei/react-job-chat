@@ -12,6 +12,7 @@ const userRoute=require('./user');
 //socket io work with express
 const server=require('http').Server(app);
 const io=require('socket.io')(server);
+
 io.on('connection',function(socket){
     socket.on('sendmessage',function(data){  //socket 为一次链接，io 为全局对象
         // console.log('data:',data);

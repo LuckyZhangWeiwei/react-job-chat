@@ -46,15 +46,11 @@ class Register extends React.Component{
               {this.props.redirectTo?<Redirect to={this.props.redirectTo}/>:null}
               {this.props.msg?<p className='error-msg'>{this.props.msg}</p>:null}
             <InputItem onChange={v=>this.props.handleChange('user',v)}>用户</InputItem>
-            <WhiteSpace/>
             <InputItem type='password' onChange={v=>this.props.handleChange('pwd',v)}>密码</InputItem>
-            <WhiteSpace/>
             <InputItem type='password' onChange={v=>this.props.handleChange('repeatpwd',v)}>确认密码</InputItem>
-            <WhiteSpace/>
             <RadioItem checked={this.props.state.usertype==='employee'} onChange={()=>this.props.handleChange('usertype','employee')}>求职者</RadioItem>
             <RadioItem checked={this.props.state.usertype==='boss'} onChange={()=>this.props.handleChange('usertype','boss')}>企业</RadioItem>
           </List>
-            <WhiteSpace/>
             <Button onClick={this.register} type="primary">注册</Button>
             <WhiteSpace/>
             <Button onClick={this.login}>登录</Button>

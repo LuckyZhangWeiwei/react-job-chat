@@ -35,8 +35,7 @@ class AvatarSelector extends React.Component{
                                key:v
                            }));
         return (
-            <div>
-               
+            <div style={{marginTop:45}}>
                 <List renderHeader={()=>this.renderHeader()}>
                 <Grid 
                   data={avatarList} 

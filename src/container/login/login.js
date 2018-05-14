@@ -38,17 +38,6 @@ class Login extends React.Component{
            <div>
                <Logo/>
                    <WhiteSpace/>
-                   <WhiteSpace/>
-                   <WhiteSpace/>
-                   <WhiteSpace/>
-                   <WhiteSpace/>
-                   <WhiteSpace/>
-                   <WhiteSpace/>
-                   <WhiteSpace/>
-                   <WhiteSpace/>
-                   <WhiteSpace/>
-                   <WhiteSpace/>
-                   <WhiteSpace/>
                <WingBlank>
                    <List>
                    {this.props.redirectTo && this.props.redirectTo!=='/login'?<Redirect to={this.props.redirectTo}/>:null}

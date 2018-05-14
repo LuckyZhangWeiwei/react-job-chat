@@ -20,9 +20,14 @@ class Chat extends React.Component{
             this.props.getMsgList();
             this.props.recvMsg();
         }
-        // setTimeout(() => {
-        //     window.dispatchEvent(new Event('resize'));
-        // }, 0);
+    //     setTimeout(() => {
+    //      window.dispatchEvent(new Event('resize'));
+    //     }, 0);
+    }
+    componentDidUpdate(preProps,preState){
+         if(this.props.chat.chatmsg.length!==preProps.chat.chatmsg.length){
+              document.getElementById("chat-page").scrollTop=document.getElementById("chat-page").scrollHeight+45;
+         }
     }
     handleSubmit(){
         if(!this.state.text){
@@ -33,6 +38,8 @@ class Chat extends React.Component{
       const msg=this.state.text;
       this.props.sendMsg({from,to,msg});
       this.setState({text:''});
+      this.props.chat.chatmsg
+      document.getElementById("chat-page").scrollTop=document.getElementById("chat-page").scrollHeight+45;
     }
    render(){
       const emoji = '😀 😁 😂 🤣 😃 😄 😅 😆 😉 😊 😋 😎 😍 😘 😗 😙 😚 ☺ 🙂 🤗 🤔 😐 😑 😶 🙄 😏 😣 😥 😮 🤐 😯 😪 😫 😴 😌 😛 😜 😝 🤤 😒 😓 😔 😕 🙃 🤑 😲 ☹ 🙁 😖 😞 😟 😤 😢 😭 😦 😧 😨 😩 😬 😰 😱 😳 😵 😡 😠 😷 🤒 🤕 🤢 🤧 😇 🤠 🤡 🤥 🤓 😈 👿 👹 👺 💀 👻 👽 🤖 💩 😺 😸 😹 😻 😼 😽 🙀 😿 😾'
