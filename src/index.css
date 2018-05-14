@@ -129,15 +129,17 @@
     transform:translatey(-50%);
 }
 .stick-footer{
-	z-index:10;
-	position: fixed;
+	position: absolute;
 	bottom: 0;
     width:100%;
     background: #f5f5f9;
 }
 .stick-header{
-    z-index:10;
+    z-index:1;
 	position: fixed;
 	top: 0;
 	width:100%;
+}
+.chatsendbutton{
+    border-radius: 0;
 }

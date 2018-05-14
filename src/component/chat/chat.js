@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import {List,TextareaItem,NavBar,Icon,Button,Grid} from 'antd-mobile';
 import {connect}from 'react-redux';
 import {getMsgList,sendMsg,recvMsg} from '../../redux/chat.redux';
@@ -12,7 +13,8 @@ class Chat extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            text:''
+            text:'',
+            marginHeight:0
         }
     }
     componentDidMount(){
@@ -79,14 +81,15 @@ class Chat extends React.Component{
                   <TextareaItem
                     placeholder='请输入'
                     value={this.state.text}
+                    ref="content"
                     onChange={v=>{
-                        this.setState({
-                            text:v
-                        })
+                        let content=ReactDOM.findDOMNode(this.refs.content); 
+                        this.setState({text:v,marginHeight:content.clientHeight});
+                        document.getElementById("chat-page").scrollTop=document.getElementById("chat-page").scrollHeight+this.state.marginHeight;
                     }}
                     autoHeight
                   />
-                  <Button type="primary"  onClick={()=>{this.handleSubmit()}}>发送</Button>
+                  <Button type="primary" className="chatsendbutton" onClick={()=>{this.handleSubmit()}}>发送</Button>
               </List>
               {/* <Grid data={emoji} columnNum={9} carouselMaxRow={4} isCarousel={true}/> */}
              </div>
