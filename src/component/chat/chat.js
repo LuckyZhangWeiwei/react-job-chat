@@ -23,11 +23,6 @@ class Chat extends React.Component{
             this.props.getMsgList();
             this.props.recvMsg();
         }
-      
-
-        // setTimeout(() => {
-        //     window.dispatchEvent(new Event('resize'));
-        // }, 0);
     }
     componentDidUpdate(preProps,preState){
          if(this.props.chat.chatmsg.length!==preProps.chat.chatmsg.length){
