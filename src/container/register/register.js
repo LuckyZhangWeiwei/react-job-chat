@@ -15,20 +15,9 @@ const RadioItem=Radio.RadioItem;
 class Register extends React.Component{
    constructor(props){
       super(props);
-    //   this.state={
-    //       usertype:'employee', //boss
-    //       user:null,
-    //       pwd:null,
-    //       repeatpwd:null
-    //   };
       this.register=this.register.bind(this);
       this.login=this.login.bind(this);
    }
-//    handleChange(key,val){
-//        this.setState({
-//            [key]:val
-//        });
-//    }
   componentDidMount(){
       this.props.handleChange('usertype','employee');
   }
