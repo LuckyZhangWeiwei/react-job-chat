@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {List,TextareaItem,NavBar,Icon,Button,Grid} from 'antd-mobile';
 import {connect}from 'react-redux';
-import {getMsgList,sendMsg,recvMsg} from '../../redux/chat.redux';
+import {getMsgList,sendMsg,recvMsg,readMsg} from '../../redux/chat.redux';
 import { getChatId } from '../../util';
 
 @connect(
   state=>state,
-  {getMsgList,sendMsg,recvMsg}  
+  {getMsgList,sendMsg,recvMsg,readMsg}  
 )
 class Chat extends React.Component{
     constructor(props){
@@ -29,6 +29,10 @@ class Chat extends React.Component{
               document.getElementById("chat-page").scrollTop=document.getElementById("chat-page").scrollHeight+45;
          }
     }
+    componentWillUnmount(){
+		const to = this.props.match.params.user
+		this.props.readMsg(to)
+	}
     fixCarousel(){
         setTimeout(() => {
             var resizeEvent = window.document.createEvent('UIEvents'); 
