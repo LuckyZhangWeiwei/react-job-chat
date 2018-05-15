@@ -11,12 +11,10 @@ class Msg extends React.Component{
 		return arr[arr.length-1]
 	}
 	render(){
-
 		const Item = List.Item
 		const Brief = Item.Brief
 		const userid = this.props.user._id
 		const userinfo = this.props.chat.users
-		// console.log(this.props)
 		const msgGroup = {}
 		this.props.chat.chatmsg.forEach(v=>{
 			msgGroup[v.chatid] = msgGroup[v.chatid] || []
@@ -31,21 +29,8 @@ class Msg extends React.Component{
         sortList =chatList.sort((a,b)=>{
 			const a_last = this.getLast(a).create_time
             const b_last = this.getLast(b).create_time
-            //console.log(a_last,b_last,b_last-a_last);
 			return b_last - a_last
         })
-        //console.log("sortList:",sortList);
-
-		// console.log([3,1,2,6,5].sort(function(a,b){
-		// 	return b-a
-		// }))
-		// console.log(Object.values({name:'imooc',age:18}))
-		// 按照聊天用户分组，根据chatid
-
-
-		// 1. eslint代码校验工具
-		// 2. react16特有的错误处理机制
-		// 2. react性能优化
 		return (
 			<div>
 				
@@ -56,8 +41,6 @@ class Msg extends React.Component{
 						if (!userinfo[targetId]) {
 							return null
 						}
-						// const name = userinfo[targetId]?userinfo[targetId].name:''
-						// const avatar = userinfo[targetId]?userinfo[targetId].avatar:''
 						return (
 							<List key={lastItem._id}>
 								<Item
