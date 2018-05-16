@@ -36,7 +36,7 @@ class Chat extends React.Component{
     fixCarousel(){
         setTimeout(() => {
             var resizeEvent = window.document.createEvent('UIEvents'); 
-           resizeEvent .initUIEvent('resize', true, false, window, 0); 
+           resizeEvent.initUIEvent('resize', true, false, window, 0); 
            window.dispatchEvent(resizeEvent);
            }, 0);
     }
@@ -49,7 +49,6 @@ class Chat extends React.Component{
       const msg=this.state.text;
       this.props.sendMsg({from,to,msg});
       this.setState({text:'',showIconPanel:false});
-      this.props.chat.chatmsg
       document.getElementById("chat-page").scrollTop=document.getElementById("chat-page").scrollHeight+45;
     }
    render(){
@@ -80,14 +79,14 @@ class Chat extends React.Component{
                         return v.from ===userid?(
                             <Item key={v._id} thumb={avatar} ><div className="you-mes">{v.content}</div></Item>
                         ):(
-                            <Item key={v._id} extra={<img src={avatar}/>} className='chat-me'><div className="me-mes">{v.content}</div></Item>
+                            <Item key={v._id} extra={<img alt={avatar} src={avatar}/>} className='chat-me'><div className="me-mes">{v.content}</div></Item>
                         );
                    })}
                    </List>
                </div>
              <div className="stick-footer">
               <List renderFooter={()=>{
-                  return <span onClick={()=>{this.setState({showIconPanel:!this.state.showIconPanel});this.fixCarousel()}}>😊</span>;
+                  return <span role="img" aria-label="img" onClick={()=>{this.setState({showIconPanel:!this.state.showIconPanel});this.fixCarousel()}}>😊</span>;
               }}>
                   {
                       this.state.showIconPanel?

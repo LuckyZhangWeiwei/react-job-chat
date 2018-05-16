@@ -49,7 +49,7 @@ class Login extends React.Component{
                    <WhiteSpace/>
                  <Button type="primary" onClick={this.logon}>登录</Button>
                  <WhiteSpace/>
-                 <Button onClick={this.register} onClick={this.register}>注册</Button>
+                 <Button onClick={this.register}>注册</Button>
               </WingBlank>
            </div>
        ) 

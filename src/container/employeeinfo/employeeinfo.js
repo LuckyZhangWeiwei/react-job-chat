@@ -1,5 +1,5 @@
 import React from 'react';
-import {List,InputItem,WingBlank,WhiteSpace,Icon,NavBar,TextareaItem} from 'antd-mobile';
+import {List,InputItem,WhiteSpace,Icon,NavBar,TextareaItem} from 'antd-mobile';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 import {updateUserInfo} from '../../redux/user.redux';

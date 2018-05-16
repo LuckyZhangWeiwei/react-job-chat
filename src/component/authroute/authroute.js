@@ -11,7 +11,6 @@ import {getUserInfo} from '../../redux/user.redux';
 )
 class AuthRoute extends React.Component{
     componentDidMount(){
-        const pathName=this.props.location.pathName;
         axios.get('/user/info').then(res=>{
             if(res.status===200){
               if(res.data.code===0){
