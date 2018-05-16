@@ -1,41 +1,49 @@
-
 import React from 'react'
 import {connect} from 'react-redux' 
 import {List,Badge} from 'antd-mobile'
- 
+import {createSelector} from 'reselect'; 
+
+let sortList=[];
+let getLast=(arr)=>{
+	return arr[arr.length-1]
+}
+const chatsSelector=createSelector(
+   state=>state,
+   (state)=>{
+	
+	const msgGroup = {}
+	state.chat.chatmsg.forEach(v=>{
+		msgGroup[v.chatid] = msgGroup[v.chatid] || []
+		msgGroup[v.chatid].push(v)
+	})
+	let chatList=[];
+	for(let index in msgGroup){
+		chatList.push(msgGroup[index]);
+	}
+	
+	sortList =chatList.sort((a,b)=>{
+		const a_last = getLast(a).create_time
+		const b_last = getLast(b).create_time
+		return b_last - a_last
+	})
+	return {sortList:sortList,userid:state.user._id,userinfo:state.chat.users}
+   }
+)
 @connect(
-	state=>state
+	state=>chatsSelector(state)
 )
 class Msg extends React.Component{
-	getLast(arr){
-		return arr[arr.length-1]
-	}
 	render(){
 		const Item = List.Item
 		const Brief = Item.Brief
-		const userid = this.props.user._id
-		const userinfo = this.props.chat.users
-		const msgGroup = {}
-		this.props.chat.chatmsg.forEach(v=>{
-			msgGroup[v.chatid] = msgGroup[v.chatid] || []
-			msgGroup[v.chatid].push(v)
-		})
-        let chatList=[];
-        let sortList=[];
-        for(let index in msgGroup){
-            chatList.push(msgGroup[index]);
-        }
-        
-        sortList =chatList.sort((a,b)=>{
-			const a_last = this.getLast(a).create_time
-            const b_last = this.getLast(b).create_time
-			return b_last - a_last
-        })
+		const userid =this.props.userid; 
+		const userinfo =this.props.userinfo; 
+		
 		return (
 			<div>
 				
-					{sortList.map(v=>{
-						const lastItem = this.getLast(v)
+					{this.props.sortList.map(v=>{
+						const lastItem = getLast(v)
 						const targetId = v[0].from===userid?v[0].to:v[0].from
 						const unreadNum = v.filter(v=>!v.read&&v.to===userid).length
 						if (!userinfo[targetId]) {
