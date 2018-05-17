@@ -1,5 +1,4 @@
 const express=require('express');
-// const utils=require('utility');
 const bodyParser=require('body-parser');
 const cookieParser=require('cookie-parser');
 
@@ -15,8 +14,6 @@ const io=require('socket.io')(server);
 
 io.on('connection',function(socket){
     socket.on('sendmessage',function(data){  //socket 为一次链接，io 为全局对象
-        // console.log('data:',data);
-        // io.emit('receivemessage',data);
         const {from,to,msg}=data;
         const chatid=[from,to].sort().join('_');
         Chat.create({chatid,from,to,content:msg},(err,doc)=>{
