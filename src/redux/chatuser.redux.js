@@ -19,12 +19,10 @@ function userList(data){
 }
 //action
 export function getUserList(usertype){
-    return dispatch=>{
-        axios.get(`/user/list?type=${usertype}`)
-        .then(res=>{
-            if(res.data.code===0){
-                dispatch(userList(res.data.data));
-            }
-        })
+    return async(dispatch,getState)=>{
+       const res=await axios.get(`/user/list?type=${usertype}`);
+       if(res.data.code===0){
+           dispatch(userList(res.data.data));
+       }
     }
 }

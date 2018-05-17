@@ -35,14 +35,13 @@ export function register({user,pwd,repeatpwd,usertype}){
     if(pwd!==repeatpwd){
         return errorMsg('密码和确认密码不一致');
     }
-    return dispatch=>{
-        axios.post('/user/register',{user,pwd,usertype}).then(res=>{
-            if(res.status===200 && res.data.code===0){
-                dispatch(authSuccess({user,pwd,usertype}));
-            }else{
-                dispatch(errorMsg(res.data.msg));
-            }
-        })
+    return async(dispatch,getState)=>{
+      const res=await  axios.post('/user/register',{user,pwd,usertype})
+      if(res.status===200 && res.data.code===0){
+          dispatch(authSuccess({user,pwd,usertype}));
+      }else{
+          dispatch(errorMsg(res.data.msg));
+      }
     }
 }
 
@@ -50,14 +49,13 @@ export function login({user,pwd}){
   if(!user || !pwd){
       return errorMsg('用户名密码必须输入');
   }
-  return dispatch=>{
-    axios.post('/user/login',{user,pwd}).then(res=>{
-        if(res.status===200 && res.data.code===0){
-            dispatch(authSuccess(res.data.data));
-        }else{
-            dispatch(errorMsg(res.data.msg));
-        }
-    })
+  return async(dispatch,getState)=>{
+     const res=await axios.post('/user/login',{user,pwd})
+     if(res.status===200 && res.data.code===0){
+        dispatch(authSuccess(res.data.data));
+     }else{
+         dispatch(errorMsg(res.data.msg));
+     }
 }
 }
 
@@ -66,15 +64,13 @@ export function getUserInfo(userInfo){
 }
 
 export function updateUserInfo(userInfo){
-    return dispatch=>{
-        axios.post(`/user/update`,userInfo)
-        .then(res=>{
-            if(res.status===200 && res.data.code===0){
-                dispatch(authSuccess(res.data.data));
-            }else{
-                dispatch(errorMsg(res.data.msg));
-            }
-        })
+    return async(dispatch,getState)=>{
+      const res=await  axios.post(`/user/update`,userInfo);
+      if(res.status===200 && res.data.code===0){
+         dispatch(authSuccess(res.data.data));
+      }else{
+           dispatch(errorMsg(res.data.msg));
+      }
     }
 }
 

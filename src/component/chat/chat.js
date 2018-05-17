@@ -5,6 +5,7 @@ import {connect}from 'react-redux';
 import {getMsgList,sendMsg,recvMsg,readMsg} from '../../redux/chat.redux';
 import { getChatId } from '../../util';
 
+
 @connect(
   state=>state,
   {getMsgList,sendMsg,recvMsg,readMsg}  
